@@ -6,7 +6,7 @@
 #    By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 19:30:44 by ottouti           #+#    #+#              #
-#    Updated: 2023/12/04 12:00:11 by ottouti          ###   ########.fr        #
+#    Updated: 2024/01/09 15:30:31 by ottouti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ DEBUGFLAGS = -g
 LDFLAGS = -L ./include/ -lft -fsanitize=address
 RM = rm -f
 
-FILES = fdf utils\
+FILES = fdf win_utils parsing img_utils\
 
 SRCS_DIR = ./src/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))
