@@ -1,3 +1,4 @@
+
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
@@ -6,12 +7,25 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 15:29:19 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/09 15:38:28 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/10 13:35:54 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
+
+/**
+ * @brief Puts a pixel with the specified color at the given coordinates in the image.
+ *
+ * This function is used to set the color of a pixel at a specific position in the image.
+ * The color parameter represents the RGB color value of the pixel.
+ * The x and y parameters specify the coordinates of the pixel in the image.
+ *
+ * @param img The image data structure.
+ * @param x The x-coordinate of the pixel.
+ * @param y The y-coordinate of the pixel.
+ * @param color The RGB color value of the pixel.
+ */
 static void	img_pix_put(t_img_data *img, int x, int y, int color)
 {
  	char    *pixel;

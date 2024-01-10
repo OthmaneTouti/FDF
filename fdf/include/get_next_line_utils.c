@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/29 07:57:36 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/09 13:57:26 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/10 15:11:18 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,13 +88,3 @@ void	delete_list(t_char_list **list)
 	*list = NULL;
 }
 
-/*Finds length of string*/
-int	ft_strlen(const char *str)
-{
-	int	len;
-
-	len = 0;
-	while (*(str++))
-		len++;
-	return (len);
-}
