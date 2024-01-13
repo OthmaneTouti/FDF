@@ -13,7 +13,6 @@
 
 #include "fdf.h"
 
-
 /**
  * @brief Puts a pixel with the specified color at the given coordinates in the image.
  *
@@ -43,43 +42,11 @@ static void	img_pix_put(t_img_data *img, int x, int y, int color)
 	}
 }
 
-static int render_rect(t_img_data *img)
+
+
+int	render_point(t_mlx_data *data, t_point *point)
 {
-    int	i;
-    int j;
-
-    i = 5;
-    while (i < 20)
-    {
-        j = 5;
-        while (j < 40)
-            img_pix_put(img, j++, i, 0x00FF0000);
-        ++i;
-    }
-    return (0);
-}
-
-static void	render_background(t_img_data *img, int color)
-{
-    int	i;
-    int	j;
-
-    i = 0;
-    while (i < 360)
-    {
-        j = 0;
-        while (j < 640)
-            img_pix_put(img, j++, i, color);
-        ++i;
-    }
-}
-
-static int	render(t_mlx_data *data)
-{
-    if (data->win == NULL)
-        return (1);
-    render_background(&data->img, 0x00FFFFFF);
-    render_rect(&data->img);
+	img_pix_put(&data->img, point->x*5+(640/2), point->y*5+(360/2), 0xFFFFFF);
     mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
     return (0);
 }
@@ -90,5 +57,4 @@ void img_init(t_mlx_data *data)
 	data->img.img = mlx_new_image(data->mlx, 640, 360);
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
 		&data->img.line_len, &data->img.endian);
-	render(data);
 }

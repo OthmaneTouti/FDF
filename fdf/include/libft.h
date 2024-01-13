@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:44:27 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/09 13:59:45 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/12 19:25:00 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,6 +53,9 @@ int			print_string(const char *str);
 int			print_digit(long n, int base, int upper);
 int			print_address(unsigned long address);
 int			found_newline(t_char_list *list);
+int			ft_count_words(char	*str, char c);
+int 		ft_count_file_rows(int fd, char c);
+int 		ft_count_file_lines(int fd);
 void		*ft_memset(void *ptr, int value, size_t len);
 void		ft_bzero(void *ptr, size_t size);
 void		*ft_memcpy(void *dst, const void *src, size_t len);
@@ -92,5 +95,6 @@ t_list		*ft_lstnew(void *nbr);
 t_list		*ft_lstlast(t_list *lst);
 t_list		*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
 t_char_list	*get_last_node(t_char_list *list);
+
 
 #endif

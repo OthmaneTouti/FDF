@@ -1,21 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   ft_count_words.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 11:36:33 by ottouti           #+#    #+#             */
-/*   Updated: 2023/11/17 21:41:22 by ottouti          ###   ########.fr       */
+/*   Created: 2024/01/12 11:55:11 by ottouti           #+#    #+#             */
+/*   Updated: 2024/01/12 12:03:21 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isdigit(int dig)
+int	ft_count_words(char	*str, char c)
 {
-	if (dig >= '0' && dig <= '9')
-		return (1);
-	else
-		return (0);
+	int	i;
+	int	count;
+	int	in_word;
+
+	i = 0;
+	count = 0;
+	in_word = 0;
+	while (str[i])
+	{
+		if (str[i] == c)
+			in_word = 0;
+		else if (str[i] != c && !in_word)
+		{
+			in_word = 1;
+			count++;
+		}
+		i++;
+	}
+	return (count);
 }

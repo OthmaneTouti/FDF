@@ -26,7 +26,8 @@ FILES = ft_memset ft_bzero ft_memcpy ft_memmove ft_memchr \
 		ft_putstr_fd ft_putendl_fd ft_putnbr_fd ft_striteri ft_lstnew \
 	  	ft_lstadd_front ft_lstsize ft_lstlast ft_lstadd_back ft_lstdelone \
 	  	ft_lstclear ft_lstiter ft_lstmap ft_printf ft_printf_utils \
-		get_next_line get_next_line_utils \
+		get_next_line get_next_line_utils ft_count_words ft_count_file_lines \
+		ft_count_file_rows \
 
 SRCS_DIR = ./
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

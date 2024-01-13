@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isdigit.c                                       :+:      :+:    :+:   */
+/*   projection.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/10/16 11:36:33 by ottouti           #+#    #+#             */
-/*   Updated: 2023/11/17 21:41:22 by ottouti          ###   ########.fr       */
+/*   Created: 2024/01/11 12:39:29 by ottouti           #+#    #+#             */
+/*   Updated: 2024/01/11 13:02:07 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "fdf.h"
 
-int	ft_isdigit(int dig)
+void	projection(t_point *point, t_mlx_data *data)
 {
-	if (dig >= '0' && dig <= '9')
-		return (1);
-	else
-		return (0);
+	int tmp_x;
+
+	
+	tmp_x = (point->x * (sqrt(2) / 2)) + (point->y * (-sqrt(2) / 2));
+	point->y = (point->x * (sqrt(2) / 2)) + (point->y * (sqrt(2) / 2));
+	point->x = tmp_x;
+	point->y = point->y * (sqrt(3) / 3) - point->z * (sqrt(6) / 3);
+	render_point(data, point);
 }
