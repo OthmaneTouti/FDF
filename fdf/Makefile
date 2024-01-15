@@ -6,7 +6,7 @@
 #    By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 19:30:44 by ottouti           #+#    #+#              #
-#    Updated: 2024/01/11 12:46:28 by ottouti          ###   ########.fr        #
+#    Updated: 2024/01/15 13:18:20 by ottouti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,7 +18,7 @@ DEBUGFLAGS = -g
 LDFLAGS = -L ./include/ -lft -fsanitize=address
 RM = rm -f
 
-FILES = fdf win_utils get_map img_utils projection\
+FILES = fdf win_utils get_map img_utils projection line_algo utils\
 
 SRCS_DIR = ./src/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

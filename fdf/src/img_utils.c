@@ -25,7 +25,7 @@
  * @param y The y-coordinate of the pixel.
  * @param color The RGB color value of the pixel.
  */
-static void	img_pix_put(t_img_data *img, int x, int y, int color)
+void	img_pix_put(t_img_data *img, int x, int y, int color)
 {
  	char    *pixel;
     int		i;
@@ -55,13 +55,19 @@ int	render_point(t_mlx_data *data, t_map *map)
 		j = 0;
 		while (j < map->dimensions[1])
 		{
-			img_pix_put(&data->img, map->points[i][j].x*10+(640/2), map->points[i][j].y*10+(360/2), 0xFFFFFF);
+			img_pix_put(&data->img, map->points[i][j].x+(640/2), map->points[i][j].y+(360/2), 0xFFFFFF);
 			j++;
 		}
 		i++;
 	}
     mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
     return (0);
+}
+
+void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color)
+{
+		img_pix_put(&data->img, x +640/2, y + 360/2, color);
+		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
 void img_init(t_mlx_data *data)

@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:38:35 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/15 10:53:57 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/15 15:22:57 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,18 +30,6 @@ static	void populate_map(t_map *map, int fd)
 			map->points[i][j].x = j;
 			map->points[i][j].y = i;
 			map->points[i][j].z = ft_atoi(line[j]);
-			j++;
-		}
-		i++;
-	}
-	i = 0;
-	j = 0;
-	while (i < map->dimensions[0])
-	{
-		j = 0;
-		while (j < map->dimensions[1])
-		{
-			printf("x: %d, y: %d, z: %d\n", map->points[i][j].x, map->points[i][j].y, map->points[i][j].z);
 			j++;
 		}
 		i++;
