@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:58:03 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/12 19:00:32 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/15 11:25:05 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,13 +50,14 @@ typedef struct s_edge {
 typedef struct s_map {
 	t_point		**points;
 	t_edge		**edges;
+	int			dimensions[2];
 }				t_map;
 
 t_mlx_data *win_init(void);
-int get_coords(char *map_path, t_mlx_data *data);
+t_map *get_coords(char *map_path, t_mlx_data *data);
 int	key_press(int keycode, t_mlx_data *data);
 int	close_win(t_mlx_data *data);
 void img_init(t_mlx_data *data);
-void	projection(t_point *point, t_mlx_data *data);
-int	render_point(t_mlx_data *data, t_point *point);
+void	projection(t_map *map, t_mlx_data *data);
+int	render_point(t_mlx_data *data, t_map *map);
 #endif

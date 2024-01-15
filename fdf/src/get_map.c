@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:38:35 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/12 19:33:13 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/15 10:53:57 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,18 +14,18 @@
 
 
 
-static	void populate_map(t_map *map, int fd, int lines, int rows)
+static	void populate_map(t_map *map, int fd)
 {
 	int i;
 	int j;
 	char **line;
 
 	i = 0;
-	while (i < lines)
+	while (i < map->dimensions[0])
 	{
 		j = 0;
 		line = ft_split(get_next_line(fd), ' ');
-		while (j < rows)
+		while (j < map->dimensions[1])
 		{
 			map->points[i][j].x = j;
 			map->points[i][j].y = i;
@@ -36,31 +36,31 @@ static	void populate_map(t_map *map, int fd, int lines, int rows)
 	}
 	i = 0;
 	j = 0;
-	// while (i < lines)
-	// {
-	// 	j = 0;
-	// 	while (j < rows)
-	// 	{
-	// 		printf("x: %d, y: %d, z: %d\n", map->points[i][j].x, map->points[i][j].y, map->points[i][j].z);
-	// 		j++;
-	// 	}
-	// 	i++;
-	// }
+	while (i < map->dimensions[0])
+	{
+		j = 0;
+		while (j < map->dimensions[1])
+		{
+			printf("x: %d, y: %d, z: %d\n", map->points[i][j].x, map->points[i][j].y, map->points[i][j].z);
+			j++;
+		}
+		i++;
+	}
 }
 
-void create_map(t_map * map, int lines, int rows)
+static void create_map(t_map * map)
 {
     int 	i;
 
 	i = 0;
-    if (!lines || !rows)
+    if (!map->dimensions[0] || !map->dimensions[1])
         return ;
-    map->points = (t_point **)malloc(sizeof(t_point *) * lines);
+    map->points = (t_point **)malloc(sizeof(t_point *) * map->dimensions[0]);
     if (!map->points)
         perror("Error allocating memory for points");
-    while (i < lines)
+    while (i < map->dimensions[0])
     {
-        map->points[i] = (t_point *)malloc(sizeof(t_point) * rows);
+        map->points[i] = (t_point *)malloc(sizeof(t_point) * map->dimensions[1]);
         if (!map->points[i])
         {
             while (i > 0)
@@ -73,32 +73,30 @@ void create_map(t_map * map, int lines, int rows)
 }
 
 
-int get_coords(char *map_path, t_mlx_data *data)
+t_map *get_coords(char *map_path, t_mlx_data *data)
 {
     int 		fd;
-	int			lines;
-	int			rows;
 	t_map		*map;
 	
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map)
 		perror("Error allocating memory for map");
     if (!data)
-        return (1);
+        return (NULL);
     fd = open(map_path, O_RDONLY);
     if (fd == -1)
     {
         perror("Error opening file");
-        return (1);
+        return (NULL);
     }
-    lines = ft_count_file_lines(fd);
+    map->dimensions[0] = ft_count_file_lines(fd);
     close(fd);
     fd = open(map_path, O_RDONLY);
-	rows = ft_count_file_rows(fd, ' ');
-	ft_printf("lines: %d, rows: %d\n", lines, rows);
-	create_map(map, lines, rows);
+	map->dimensions[1] = ft_count_file_rows(fd, ' ');
+	ft_printf("lines: %d, rows: %d\n", map->dimensions[0], map->dimensions[1]);
+	create_map(map);
 	close(fd);
 	fd = open(map_path, O_RDONLY);
-	populate_map(map, fd, lines, rows);
-    return (0);
+	populate_map(map, fd);
+    return (map);
 }

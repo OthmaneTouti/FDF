@@ -44,9 +44,22 @@ static void	img_pix_put(t_img_data *img, int x, int y, int color)
 
 
 
-int	render_point(t_mlx_data *data, t_point *point)
+int	render_point(t_mlx_data *data, t_map *map)
 {
-	img_pix_put(&data->img, point->x*5+(640/2), point->y*5+(360/2), 0xFFFFFF);
+	int i;
+	int j;
+
+	i = 0;
+	while (i < map->dimensions[0])
+	{
+		j = 0;
+		while (j < map->dimensions[1])
+		{
+			img_pix_put(&data->img, map->points[i][j].x*10+(640/2), map->points[i][j].y*10+(360/2), 0xFFFFFF);
+			j++;
+		}
+		i++;
+	}
     mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
     return (0);
 }
