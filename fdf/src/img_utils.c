@@ -64,10 +64,11 @@ int	render_point(t_mlx_data *data, t_map *map)
     return (0);
 }
 
-void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color)
+void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, int *dimensions)
 {
-		img_pix_put(&data->img, x +640/2, y + 360/2, color);
-		mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	//ft_printf("x: %d, y: %d\n", x, y);
+	img_pix_put(&data->img, x + (640 / 2 - dimensions[1]*5), y + (360 / 2 - dimensions[0]*5), color);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 }
 
 void img_init(t_mlx_data *data)

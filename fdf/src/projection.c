@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 12:39:29 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/15 16:11:58 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:51:05 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,9 @@ static void iso(t_point *point)
 {
     int previous_x;
 
-    point->x *= 10;
-    point->y *= 10;
-    point->z *= 5;
+    point->x *= 5;
+    point->y *= 5;
+    point->z *= 1;
     previous_x = point->x;
     point->x = (previous_x - point->y) * cos(0.523599);
     point->y = -point->z + (previous_x + point->y) * sin(0.523599);
@@ -42,6 +42,6 @@ void projection(t_map *map, t_mlx_data *data)
         }
         i++;
     }
-    render_point(data, map);
+   // render_point(data, map);
     plot_map(data, map);
 }

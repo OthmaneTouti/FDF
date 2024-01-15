@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:58:03 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/15 13:17:42 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:32:59 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ int	key_press(int keycode, t_mlx_data *data);
 int	close_win(t_mlx_data *data);
 int ft_max(int a, int b);
 void img_init(t_mlx_data *data);
-void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color);
+void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, int *dimensions);
 void	projection(t_map *map, t_mlx_data *data);
 void	img_pix_put(t_img_data *img, int x, int y, int color);
 void plot_map(t_mlx_data *data, t_map *map);

@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:09 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/11 12:39:02 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/15 16:49:09 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_mlx_data *win_init(void)
         free(data);
         return NULL;
     }
-    data->win = mlx_new_window(data->mlx, 640, 360, "File de faire");
+    data->win = mlx_new_window(data->mlx, 1280, 720, "File de faire");
     if (!(data->win))
     {
         free(data->mlx);
