@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:57:10 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 13:14:53 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:37:39 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,12 @@ int	main(int argc, char **argv)
 	scale(map);
 	assign_color(map);
 	projection(map);
+	plot_map(data, map);
+	clean_map(map);
+	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	mlx_hook(data->win, 2, 1L<<0, key_press, &data);
 	mlx_hook(data->win, 17, 1L<<17, close_win, &data);
-	plot_map(data, map);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
 	mlx_loop(data->mlx);
 	
-	return (0);
+	exit (0);
 }

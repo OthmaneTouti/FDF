@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:58:03 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 15:26:32 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:38:14 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,5 +83,6 @@ void scale(t_map *map);
 void find_gradient(t_point p0, t_point p1, t_point *coor);
 void assign_color(t_map *map);
 void find_min_max_z(t_map *map, int *min_z, int *max_z);
+void clean_map(t_map *map);
 float	ft_min(float a, float b);
 #endif

@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:09 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 15:25:42 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:40:45 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,15 @@
 
 int	close_win(t_mlx_data *data)
 {
-	free(data->mlx);
-	exit (0);
+    free(data->mlx);
+    ft_printf("FDF closed successfully\n");
+    exit(0);
 }
 
 int	key_press(int keycode, t_mlx_data *data)
 {
     if (keycode == 53)
-        close_win(data);
+		close_win(data);
     return (0);
 }
 

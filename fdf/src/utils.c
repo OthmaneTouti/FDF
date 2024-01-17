@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:16:45 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 12:46:29 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 16:24:23 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,4 +73,19 @@ void find_min_max_z(t_map *map, int *min_z, int *max_z)
         }
         i++;
     }
+}
+
+void clean_map(t_map *map)
+{
+	int i;
+
+	i = 0;
+	while (i < map->dimensions[0])
+	{
+		free(map->points[i]);
+		i++;
+	}
+	free(map->points);
+	free(map);
+	ft_printf("Map cleaned\n");
 }
