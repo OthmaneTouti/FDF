@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:16:45 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:21:22 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:34:27 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ float	ft_min(float a, float b)
 	return (b);
 }
 
-void find_min_max(t_2d_map *map)
+void find_min_max(t_map *map)
 {
 	int i;
 	int j;
@@ -49,6 +49,4 @@ void find_min_max(t_2d_map *map)
 		}
 		i++;
 	}
-	printf("min x: %d, min y: %d\n", map->min[1], map->min[0]);
-	printf("max x: %d, max y: %d\n", map->max[1], map->max[0]);
 }

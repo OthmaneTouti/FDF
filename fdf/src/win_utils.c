@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:09 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:21:28 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:27:31 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	key_press(int keycode, t_mlx_data *data)
     return (0);
 }
 
-t_mlx_data *win_init(t_2d_map *map)
+t_mlx_data *win_init()
 {
     t_mlx_data	*data;
     
@@ -38,14 +38,7 @@ t_mlx_data *win_init(t_2d_map *map)
         free(data);
         return NULL;
     }
-	data->width = (map->max[1] - map->min[1]) * 50;
-	data->height = (map->max[0] - map->min[0]) * 50;
-	if (data->width > 1280)
-		data->width = 1280;
-	if (data->height > 720)
-		data->height = 720;
-	printf("width: %d, height: %d\n", data->width, data->height);
-    data->win = mlx_new_window(data->mlx, data->width, data->height, "File de faire");
+    data->win = mlx_new_window(data->mlx, WIDTH, HEIGHT, "File de faire");
     if (!(data->win))
     {
         free(data->mlx);

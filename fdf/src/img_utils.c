@@ -32,7 +32,7 @@ static void	img_pix_put(t_mlx_data *data, int x, int y, int color)
     int		i;
 
 	img = &data->img;
-	if (x > data->width || y > data->height || x < 0 || y < 0)
+	if (x > WIDTH || y > HEIGHT || x < 0 || y < 0)
 		return ;
     i = img->bpp - 8;
     pixel = data->img.addr + (y * img->line_len + x * (img->bpp / 8));
@@ -47,20 +47,20 @@ static void	img_pix_put(t_mlx_data *data, int x, int y, int color)
 }
 
 
-void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_2d_map *map)
+void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_map *map)
 {
 	int	offset_x;
 	int	offset_y;
 
-	offset_x = (data->width/2) - (map->dimensions[1] * map->scale);
-	offset_y = (data->height/2) - (map->dimensions[0] * map->scale);
+	offset_x = (WIDTH / 2) - (map->dimensions[1] * map->scale);
+	offset_y = (HEIGHT / 2) - (map->dimensions[0] * map->scale);
     img_pix_put(data, x + offset_x, y + offset_y, color);
 }
 
 void img_init(t_mlx_data *data)
 {
 	
-	data->img.img = mlx_new_image(data->mlx, data->width, data->height);
+	data->img.img = mlx_new_image(data->mlx, WIDTH, HEIGHT);
 	if (!data->img.img)
 		perror("Error creating image");
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,

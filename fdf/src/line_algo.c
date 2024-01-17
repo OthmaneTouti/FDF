@@ -6,16 +6,16 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:36:18 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:21:32 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:24:31 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "fdf.h"
 
-static void	ft_plot_line_low(t_2d_point p0, t_2d_point p1, t_mlx_data *data, t_2d_map *map)
+static void	ft_plot_line_low(t_point p0, t_point p1, t_mlx_data *data, t_map *map)
 {
     t_plot_line_tools	plt;
-    t_3d_point				coor;
+    t_point				coor;
     int 				abs_dx;
 	int					abs_dy;
 
@@ -42,10 +42,10 @@ static void	ft_plot_line_low(t_2d_point p0, t_2d_point p1, t_mlx_data *data, t_2
     }
 }
 
-static void	ft_plot_line_high(t_2d_point p0, t_2d_point p1, t_mlx_data *data, t_2d_map *map)
+static void	ft_plot_line_high(t_point p0, t_point p1, t_mlx_data *data, t_map *map)
 {
     t_plot_line_tools	plt;
-    t_3d_point				coor;
+    t_point				coor;
 	int					abs_dx;
 	int					abs_dy;
 
@@ -73,7 +73,7 @@ static void	ft_plot_line_high(t_2d_point p0, t_2d_point p1, t_mlx_data *data, t_
     }
 }
 
-static void	ft_plot_line(t_2d_point p0, t_2d_point p1, t_mlx_data *data, t_2d_map *map)
+static void	ft_plot_line(t_point p0, t_point p1, t_mlx_data *data, t_map *map)
 {
 	int	dx;
 	int	dy;
@@ -96,7 +96,7 @@ static void	ft_plot_line(t_2d_point p0, t_2d_point p1, t_mlx_data *data, t_2d_ma
 	}
 }
 
-void plot_map(t_mlx_data *data, t_2d_map *map)
+void plot_map(t_mlx_data *data, t_map *map)
 {
     int i;
     int j;
