@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/10/16 13:44:27 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/12 19:25:00 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:55:43 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,6 +45,7 @@ int			ft_tolower(int c);
 int			ft_strncmp(const char *s1, const char *s2, size_t n);
 int			ft_memcmp(const void *s1, const void *s2, size_t n);
 int			ft_atoi(const char *str);
+int			ft_atoi_base(const char *str, int base);
 int			ft_lstsize(t_list *lst);
 int			ft_printf(const char *format, ...);
 int			print_char(int c);

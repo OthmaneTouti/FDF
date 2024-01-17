@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:02:09 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:27:31 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:25:42 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,3 +48,4 @@ t_mlx_data *win_init()
     img_init(data);
     return (data);
 }
+

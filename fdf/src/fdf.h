@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:58:03 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:35:18 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:26:32 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,7 @@
 # include "../mlx/mlx.h"
 # include <stdio.h>
 # include <math.h>
+# include <limits.h>
 
 # define WIDTH 1280
 # define HEIGHT 720
@@ -43,9 +44,9 @@ typedef struct	s_point {
 	int			x;
 	int			y;
 	int			z;
+	int			color;
 }				t_point;
 
-//Contains point coordinates of two points that make an edge
 typedef struct s_plot_line_tools {
 	int			dx;
 	int			dy;
@@ -62,6 +63,12 @@ typedef struct s_map {
 	float		scale;
 }				t_map;
 
+typedef struct s_color {
+	int			r;
+	int			g;
+	int			b;
+}				t_color;
+
 t_mlx_data *win_init();
 t_map *get_coords(char *map_path);
 int	key_press(int keycode, t_mlx_data *data);
@@ -73,5 +80,8 @@ void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_ma
 void	projection(t_map *map);
 void plot_map(t_mlx_data *data, t_map *map);
 void scale(t_map *map);
+void find_gradient(t_point p0, t_point p1, t_point *coor);
+void assign_color(t_map *map);
+void find_min_max_z(t_map *map, int *min_z, int *max_z);
 float	ft_min(float a, float b);
 #endif

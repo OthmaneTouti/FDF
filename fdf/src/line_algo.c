@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 11:36:18 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:24:31 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:08:16 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,8 @@ static void	ft_plot_line_low(t_point p0, t_point p1, t_mlx_data *data, t_map *ma
     coor.y = p0.y;
     while (coor.x <= p1.x)
     {
-        ft_put_pixel(data, coor.x, coor.y, 0xFFFFFF, map);
+		find_gradient(p0, p1, &coor);
+        ft_put_pixel(data, coor.x, coor.y, coor.color, map);
         if (plt.d > 0)
         {
             coor.y += plt.yi;
@@ -62,7 +63,8 @@ static void	ft_plot_line_high(t_point p0, t_point p1, t_mlx_data *data, t_map *m
     while (coor.y <= p1.y)
     {
 		//ft_printf("coord y: %d, target y: %d\n", coor.y, p1.y);
-        ft_put_pixel(data, coor.x, coor.y, 0xFFFFFF, map);
+		find_gradient(p0, p1, &coor);
+        ft_put_pixel(data, coor.x, coor.y, coor.color, map);
         if (plt.d > 0)
         {
             coor.x += plt.xi;

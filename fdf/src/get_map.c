@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:38:35 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:37:25 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 15:10:53 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,9 +27,13 @@ static	void populate_map(t_map *map, int fd)
 		line = ft_split(get_next_line(fd), ' ');
 		while (j < map->dimensions[1])
 		{
+			if (ft_strchr(line[j], ','))
+				map->points[i][j].color = ft_atoi_base(ft_strchr(line[j], ',') + 3, 16);
+			else
+				map->points[i][j].color = -1;
 			map->points[i][j].x = j;
 			map->points[i][j].y = i;
-			map->points[i][j].z = ft_atoi(line[j]);
+			map->points[i][j].z = ft_atoi(ft_strtrim(line[j], ","));
 			j++;
 		}
 		i++;
@@ -79,7 +83,11 @@ t_map *get_coords(char *map_path)
     close(fd);
     fd = open(map_path, O_RDONLY);
 	map->dimensions[1] = ft_count_file_rows(fd, ' ');
-	ft_printf("lines: %d, rows: %d\n", map->dimensions[0], map->dimensions[1]);
+	if (!map->dimensions[0] || !map->dimensions[1])
+	{
+		perror("Error: invalid map");
+		exit(1);
+	}
 	create_map(map);
 	close(fd);
 	fd = open(map_path, O_RDONLY);

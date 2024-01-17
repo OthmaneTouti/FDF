@@ -47,15 +47,23 @@ static void	img_pix_put(t_mlx_data *data, int x, int y, int color)
 }
 
 
+
 void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_map *map)
 {
-	int	offset_x;
-	int	offset_y;
+    int	offset_x;
+    int	offset_y;
 
-	offset_x = (WIDTH / 2) - (map->dimensions[1] * map->scale);
-	offset_y = (HEIGHT / 2) - (map->dimensions[0] * map->scale);
+    // Calculate the position of the top-left corner of the map
+    int map_x = map->points[0][0].x * map->scale;
+    int map_y = map->points[0][0].y * map->scale;
+
+    // Calculate the offsets based on the position of the top-left corner of the map
+    offset_x = (WIDTH / 2) - map_x;
+    offset_y = (HEIGHT / 2) - map_y;
+
     img_pix_put(data, x + offset_x, y + offset_y, color);
 }
+
 
 void img_init(t_mlx_data *data)
 {

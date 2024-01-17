@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:16:45 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 11:34:27 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 12:46:29 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,4 +49,28 @@ void find_min_max(t_map *map)
 		}
 		i++;
 	}
+}
+
+void find_min_max_z(t_map *map, int *min_z, int *max_z)
+{
+    int i;
+    int j;
+    int z;
+
+    *min_z = INT_MAX;
+    *max_z = INT_MIN;
+    i = 0;
+    while (i < map->dimensions[0]) {
+        j = 0;
+        while (j < map->dimensions[1])
+		{
+            z = map->points[i][j].z;
+            if (z < *min_z)
+                *min_z = z;
+            if (z > *max_z)
+                *max_z = z;
+            j++;
+        }
+        i++;
+    }
 }
