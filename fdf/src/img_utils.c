@@ -25,13 +25,17 @@
  * @param y The y-coordinate of the pixel.
  * @param color The RGB color value of the pixel.
  */
-void	img_pix_put(t_img_data *img, int x, int y, int color)
+static void	img_pix_put(t_mlx_data *data, int x, int y, int color)
 {
  	char    *pixel;
+	t_img_data *img;
     int		i;
 
+	img = &data->img;
+	if (x > data->width || y > data->height || x < 0 || y < 0)
+		return ;
     i = img->bpp - 8;
-    pixel = img->addr + (y * img->line_len + x * (img->bpp / 8));
+    pixel = data->img.addr + (y * img->line_len + x * (img->bpp / 8));
     while (i >= 0)
     {
         if (img->endian != 0)
@@ -43,38 +47,24 @@ void	img_pix_put(t_img_data *img, int x, int y, int color)
 }
 
 
-
-int	render_point(t_mlx_data *data, t_map *map)
+void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_2d_map *map)
 {
-	int i;
-	int j;
+	int	offset_x;
+	int	offset_y;
 
-	i = 0;
-	while (i < map->dimensions[0])
-	{
-		j = 0;
-		while (j < map->dimensions[1])
-		{
-			img_pix_put(&data->img, map->points[i][j].x+(640/2), map->points[i][j].y+(360/2), 0xFFFFFF);
-			j++;
-		}
-		i++;
-	}
-    mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
-    return (0);
-}
-
-void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, int *dimensions)
-{
-	//ft_printf("x: %d, y: %d\n", x, y);
-	img_pix_put(&data->img, x + (640 / 2 - dimensions[1]*5), y + (360 / 2 - dimensions[0]*5), color);
-	mlx_put_image_to_window(data->mlx, data->win, data->img.img, 0, 0);
+	offset_x = (data->width/2) - (map->dimensions[1] * map->scale);
+	offset_y = (data->height/2) - (map->dimensions[0] * map->scale);
+    img_pix_put(data, x + offset_x, y + offset_y, color);
 }
 
 void img_init(t_mlx_data *data)
 {
 	
-	data->img.img = mlx_new_image(data->mlx, 640, 360);
+	data->img.img = mlx_new_image(data->mlx, data->width, data->height);
+	if (!data->img.img)
+		perror("Error creating image");
 	data->img.addr = mlx_get_data_addr(data->img.img, &data->img.bpp,
 		&data->img.line_len, &data->img.endian);
+	if (!data->img.addr)
+		perror("Error getting image address");
 }

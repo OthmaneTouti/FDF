@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/09 14:38:35 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/15 15:22:57 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/17 11:21:30 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,12 +43,12 @@ static void create_map(t_map * map)
 	i = 0;
     if (!map->dimensions[0] || !map->dimensions[1])
         return ;
-    map->points = (t_point **)malloc(sizeof(t_point *) * map->dimensions[0]);
+    map->points = (t_3d_point **)malloc(sizeof(t_3d_point *) * map->dimensions[0]);
     if (!map->points)
         perror("Error allocating memory for points");
     while (i < map->dimensions[0])
     {
-        map->points[i] = (t_point *)malloc(sizeof(t_point) * map->dimensions[1]);
+        map->points[i] = (t_3d_point *)malloc(sizeof(t_3d_point) * map->dimensions[1]);
         if (!map->points[i])
         {
             while (i > 0)
@@ -61,7 +61,7 @@ static void create_map(t_map * map)
 }
 
 
-t_map *get_coords(char *map_path, t_mlx_data *data)
+t_map *get_coords(char *map_path)
 {
     int 		fd;
 	t_map		*map;
@@ -69,8 +69,6 @@ t_map *get_coords(char *map_path, t_mlx_data *data)
 	map = (t_map *)malloc(sizeof(t_map));
 	if (!map)
 		perror("Error allocating memory for map");
-    if (!data)
-        return (NULL);
     fd = open(map_path, O_RDONLY);
     if (fd == -1)
     {
