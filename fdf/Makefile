@@ -6,7 +6,7 @@
 #    By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/11/17 19:30:44 by ottouti           #+#    #+#              #
-#    Updated: 2024/01/17 12:54:03 by ottouti          ###   ########.fr        #
+#    Updated: 2024/01/18 13:08:31 by ottouti          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -19,7 +19,7 @@ LDFLAGS = -L ./include/ -lft -fsanitize=address
 RM = rm -f
 
 FILES = fdf win_utils get_map img_utils projection line_algo utils scale \
-		color \
+		color error cleaning \
 
 SRCS_DIR = ./src/
 SRCS = $(addprefix $(SRCS_DIR), $(addsuffix .c, $(FILES)))

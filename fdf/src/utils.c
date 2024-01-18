@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/15 13:16:45 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 16:24:23 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:07:27 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ void find_min_max_z(t_map *map, int *min_z, int *max_z)
     while (i < map->dimensions[0]) {
         j = 0;
         while (j < map->dimensions[1])
-		{
+        {
             z = map->points[i][j].z;
             if (z < *min_z)
                 *min_z = z;
@@ -75,17 +75,12 @@ void find_min_max_z(t_map *map, int *min_z, int *max_z)
     }
 }
 
-void clean_map(t_map *map)
+void open_file(int *fd, char *map_path)
 {
-	int i;
-
-	i = 0;
-	while (i < map->dimensions[0])
-	{
-		free(map->points[i]);
-		i++;
-	}
-	free(map->points);
-	free(map);
-	ft_printf("Map cleaned\n");
+    *fd = open(map_path, O_RDONLY);
+    if (*fd == -1)
+    {
+        perror("Error opening file");
+        exit(1);
+    }
 }

@@ -6,7 +6,7 @@
 /*   By: ottouti <ottouti@student.42quebec.com>     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/12/03 21:58:03 by ottouti           #+#    #+#             */
-/*   Updated: 2024/01/17 16:38:14 by ottouti          ###   ########.fr       */
+/*   Updated: 2024/01/18 13:08:16 by ottouti          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,13 +76,15 @@ int	close_win(t_mlx_data *data);
 float ft_max(float a, float b);
 void img_init(t_mlx_data *data);
 void find_min_max(t_map *map);
-void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_map *map);
+void	ft_put_pixel(t_mlx_data *data, uint32_t x, u_int32_t y, uint32_t color, t_map *map);
 void	projection(t_map *map);
 void plot_map(t_mlx_data *data, t_map *map);
 void scale(t_map *map);
+void open_file(int *fd, char *map_path);
 void find_gradient(t_point p0, t_point p1, t_point *coor);
 void assign_color(t_map *map);
 void find_min_max_z(t_map *map, int *min_z, int *max_z);
 void clean_map(t_map *map);
+int	check_digit(char *str);
 float	ft_min(float a, float b);
 #endif

@@ -32,7 +32,7 @@ static void	img_pix_put(t_mlx_data *data, int x, int y, int color)
     int		i;
 
 	img = &data->img;
-	if (x > WIDTH || y > HEIGHT || x < 0 || y < 0)
+	if (x >= WIDTH || y >= HEIGHT || x < 0 || y < 0)
 		return ;
     i = img->bpp - 8;
     pixel = data->img.addr + (y * img->line_len + x * (img->bpp / 8));
@@ -46,7 +46,13 @@ static void	img_pix_put(t_mlx_data *data, int x, int y, int color)
 	}
 }
 
-
+static void check_boundaries(uint32_t x, uint32_t y, int *offset_x, int *offset_y)
+{
+	while (x + *offset_x > WIDTH)
+		*offset_x -= 1;
+	while (y + *offset_y > HEIGHT)
+		*offset_y -= 1;
+}
 
 void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_map *map)
 {
@@ -60,7 +66,7 @@ void	ft_put_pixel(t_mlx_data *data, uint32_t x, uint32_t y, uint32_t color, t_ma
     // Calculate the offsets based on the position of the top-left corner of the map
     offset_x = (WIDTH / 2) - map_x;
     offset_y = (HEIGHT / 2) - map_y;
-
+	check_boundaries(x, y, &offset_x, &offset_y);
     img_pix_put(data, x + offset_x, y + offset_y, color);
 }
 
